@@ -6,7 +6,8 @@ heatmapMatrix=heatmapMatrix(selbin,:);
 heatmapMatrix=heatmapMatrix(:,selbin);
 
 FreqMat=heatmapMatrix;
-[num_parts,comps]=graphconncomp(sparse(FreqMat),'Weak', 1);
+comps = conncomp(graph(sparse(FreqMat)));
+num_parts = max(comps);
 %%make sure connected   
 if num_parts>1
     compstat=tabulate(comps);
